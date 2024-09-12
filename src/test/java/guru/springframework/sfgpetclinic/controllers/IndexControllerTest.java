@@ -1,6 +1,7 @@
 package guru.springframework.sfgpetclinic.controllers;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -15,6 +16,7 @@ class IndexControllerTest {
     }
 
     @Test
+    @DisplayName("Testing the index method returning the desired view.")
     void index() {
         String result = controller.index();
         assertEquals("index", result);
