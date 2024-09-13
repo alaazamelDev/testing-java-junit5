@@ -1,13 +1,12 @@
 package guru.springframework.sfgpetclinic.controllers;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
+@Tag("controllers")
 class IndexControllerTest {
 
     private IndexController controller;
@@ -35,6 +34,15 @@ class IndexControllerTest {
     @Test
     @DisplayName("test not found exception")
     void testException() {
-        assertThrows(ValueNotFoundException.class, () -> controller.oupsHandler(), "ValueNotFound exception must be thrown");
+        assertThatExceptionOfType(ValueNotFoundException.class).isThrownBy(() -> controller.oupsHandler());
+    }
+
+    @Test
+    @DisplayName("test that has to run only in production mode")
+    void testAssumption() {
+        assumeTrue(
+                "production".equalsIgnoreCase("production"),
+                "App must be in production mode in order to run this test."
+        );
     }
 }
