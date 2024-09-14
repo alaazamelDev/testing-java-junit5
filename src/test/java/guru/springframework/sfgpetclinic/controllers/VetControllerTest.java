@@ -1,5 +1,6 @@
 package guru.springframework.sfgpetclinic.controllers;
 
+import guru.springframework.sfgpetclinic.interfaces.ControllerTest;
 import guru.springframework.sfgpetclinic.model.ConcreteModel;
 import guru.springframework.sfgpetclinic.model.Vet;
 import guru.springframework.sfgpetclinic.services.SpecialtyService;
@@ -7,15 +8,13 @@ import guru.springframework.sfgpetclinic.services.VetService;
 import guru.springframework.sfgpetclinic.services.map.SpecialityMapService;
 import guru.springframework.sfgpetclinic.services.map.VetMapService;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@Tag("controllers")
-class VetControllerTest {
+class VetControllerTest implements ControllerTest {
 
     private VetService vetService;
     private SpecialtyService specialtyService;
